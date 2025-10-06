@@ -9,12 +9,12 @@ import Cart from "./components/Cart/Cart.jsx";
 import useCart from "./hooks/useCart.js";
 
 function App() {
-  const { addedProducts, addToCart } = useCart();
+  const { addedProducts, addToCart, removeFromCart } = useCart();
 
   return (
     <>
-      <ProductList onAddToCart={addToCart} addedProducts={addedProducts}/>
-      <Cart cartItems={addedProducts} />
+      <ProductList onAddToCart={addToCart} addedProducts={addedProducts} />
+      <Cart cartItems={addedProducts} removeFromCart={removeFromCart} />
     </>
   );
 }

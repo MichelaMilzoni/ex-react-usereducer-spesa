@@ -16,9 +16,7 @@ function ProductList({ onAddToCart, addedProducts }) {
           return (
             <li key={product.name}>
               {product.name} - €{product.price}
-              <button onClick={() => onAddToCart(product)} disabled={isInCart}>
-                {isInCart ? "Già nel carrello" : "Aggiungi alla lista"}
-              </button>
+              <button onClick={() => onAddToCart(product)}>Aggiungi alla lista</button>
             </li>
           );
         })}
