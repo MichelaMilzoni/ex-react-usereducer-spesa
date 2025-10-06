@@ -1,3 +1,4 @@
+// Definisco l'array dei prodotti disponibili con nome e prezzo
 const products = [
   { name: "Mela", price: 0.5 },
   { name: "Pane", price: 1.2 },
@@ -5,17 +6,27 @@ const products = [
   { name: "Pasta", price: 0.7 },
 ];
 
+// Creo il componente ProductList
+// Ricevo due props: onAddToCart (funzione per aggiungere al carrello) e addedProducts (prodotti già nel carrello)
 function ProductList({ onAddToCart, addedProducts }) {
   return (
     <div>
+      {/* Titolo della sezione */}
       <h2>Lista della spesa</h2>
+
+      {/* Creo una lista non ordinata */}
       <ul>
+        {/* Mappo l'array dei prodotti per mostrarli uno per uno */}
         {products.map((product) => {
+          // Controllo se il prodotto è già presente nel carrello
           const isInCart = addedProducts.some((item) => item.name === product.name);
 
+          // Ritorno un <li> per ogni prodotto
           return (
             <li key={product.name}>
+              {/* Mostro nome e prezzo del prodotto */}
               {product.name} - €{product.price}
+              {/* Bottone per aggiungere il prodotto al carrello */}
               <button onClick={() => onAddToCart(product)}>Aggiungi alla lista</button>
             </li>
           );
@@ -25,4 +36,5 @@ function ProductList({ onAddToCart, addedProducts }) {
   );
 }
 
+// Esporto il componente per poterlo usare in altri file
 export default ProductList;
