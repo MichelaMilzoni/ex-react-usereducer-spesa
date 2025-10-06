@@ -1,3 +1,6 @@
+// Importo l'icona FaTrash da react-icons
+import { FaTrash } from "react-icons/fa";
+
 // Esporto il componente Cart, che riceve tre props:
 // cartItems (array dei prodotti nel carrello), removeFromCart (funzione per rimuovere), updateProductQuantity (funzione per aggiornare quantità)
 export default function Cart({ cartItems, removeFromCart, updateProductQuantity }) {
@@ -21,10 +24,10 @@ export default function Cart({ cartItems, removeFromCart, updateProductQuantity 
   return (
     <>
       <h2>Carrello</h2>
-      <ul>
+      <ul className="cart-list">
         {cartItems.map((product) => (
           // Per ogni prodotto, creo un <li> con chiave basata sul nome
-          <li key={product.name}>
+          <li key={product.name} className="cart-item">
             {/* Campo input per modificare manualmente la quantità */}
             <input
               type="number"
@@ -35,13 +38,15 @@ export default function Cart({ cartItems, removeFromCart, updateProductQuantity 
             {/* Mostro nome e prezzo totale per quel prodotto */}x {product.name} - €
             {(product.price * product.quantity).toFixed(2)}
             {/* Bottone per rimuovere il prodotto dal carrello */}
-            <button onClick={() => removeFromCart(product.name)}>Rimuovi dal Carrello</button>
+            <button className="icon-button" onClick={() => removeFromCart(product.name)}>
+              <FaTrash className="icon" /> Rimuovi
+            </button>
           </li>
         ))}
       </ul>
 
       {/* Mostro il totale complessivo del carrello */}
-      <div>
+      <div className="cart-total">
         <strong>Totale:</strong> € {totalPrice}
       </div>
     </>

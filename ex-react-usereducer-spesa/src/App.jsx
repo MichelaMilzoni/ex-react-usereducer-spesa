@@ -3,6 +3,9 @@ import { useState } from "react";
 
 // Importo il file CSS per gli stili dell'app
 import "./App.css";
+import "./components/Cart/Cart.css";
+import "./components/ProductList/List.css";
+import "./index.css";
 
 //* COMPONENTI
 // Importo il componente ProductList dalla sua cartella
@@ -25,17 +28,21 @@ function App() {
 
   // Ritorno il layout dell'app: lista dei prodotti e carrello
   return (
-    <>
+    <div className="app-container">
       {/* Passo la funzione addToCart e lo stato addedProducts al componente ProductList */}
-      <ProductList onAddToCart={addToCart} addedProducts={addedProducts} />
+      <div className="card">
+        <ProductList onAddToCart={addToCart} addedProducts={addedProducts} />
+      </div>
 
       {/* Passo lo stato e le funzioni al componente Cart */}
-      <Cart
-        cartItems={addedProducts}
-        removeFromCart={removeFromCart}
-        updateProductQuantity={updateProductQuantity}
-      />
-    </>
+      <div className="card">
+        <Cart
+          cartItems={addedProducts}
+          removeFromCart={removeFromCart}
+          updateProductQuantity={updateProductQuantity}
+        />
+      </div>
+    </div>
   );
 }
 

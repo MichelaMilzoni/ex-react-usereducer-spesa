@@ -1,3 +1,6 @@
+// Importo l'icona FaPlus da react-icons
+import { FaPlus } from "react-icons/fa";
+
 // Definisco l'array dei prodotti disponibili con nome e prezzo
 const products = [
   { name: "Mela", price: 0.5 },
@@ -15,7 +18,7 @@ function ProductList({ onAddToCart, addedProducts }) {
       <h2>Lista della spesa</h2>
 
       {/* Creo una lista non ordinata */}
-      <ul>
+      <ul className="product-list">
         {/* Mappo l'array dei prodotti per mostrarli uno per uno */}
         {products.map((product) => {
           // Controllo se il prodotto è già presente nel carrello
@@ -23,11 +26,13 @@ function ProductList({ onAddToCart, addedProducts }) {
 
           // Ritorno un <li> per ogni prodotto
           return (
-            <li key={product.name}>
+            <li key={product.name} className="product-item">
               {/* Mostro nome e prezzo del prodotto */}
               {product.name} - €{product.price}
               {/* Bottone per aggiungere il prodotto al carrello */}
-              <button onClick={() => onAddToCart(product)}>Aggiungi alla lista</button>
+              <button className="icon-button" onClick={() => onAddToCart(product)}>
+                <FaPlus className="icon" /> Aggiungi
+              </button>
             </li>
           );
         })}
